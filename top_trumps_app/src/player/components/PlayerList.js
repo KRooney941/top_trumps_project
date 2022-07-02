@@ -1,8 +1,23 @@
 import React from 'react';
+import Player from "./Player"
 
-const PlayerList = () => {
+const PlayerList = ({players, updatePlayer, deletePlayer}) => {
+  const playerNodes= players.map(player => {
+    return <Player
+      key={player.id}
+      player={player}
+      updatePlayer={updatePlayer}
+      deletePlayer={deletePlayer}
+  />
+  });
+  
   return (
-    <p>This is the PlayerList</p>
+    <section id="players">
+      <h2>Player List</h2>
+      <div id="players-wrapper">
+        {playerNodes}
+      </div>
+    </section>
   )
 }
 
