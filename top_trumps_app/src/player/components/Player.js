@@ -1,6 +1,7 @@
 const Player = ({player, deletePlayer}) => {
 
-const handleDeletePlayer = () => {
+  const handleDeletePlayer = () => {
+  
     deletePlayer(player._id);
   }
 

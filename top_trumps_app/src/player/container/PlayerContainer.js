@@ -8,13 +8,12 @@ const PlayerContainer = ({players, createPlayer, updatePlayer, deletePlayer}) =>
   return (
     <>
     <h1>This is the PlayerContainer.</h1>
-    <PlayerForm addPlayer={createPlayer}/>
+    <PlayerForm createPlayer={createPlayer}/>
     <PlayerList 
     players={players}
     updatePlayer={updatePlayer}
     deletePlayer={deletePlayer}
     />
-    <PlayerDetails />
     </>
   )
 };
