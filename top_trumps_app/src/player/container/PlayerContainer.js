@@ -4,12 +4,16 @@ import PlayerForm from '../components/PlayerForm';
 import PlayerList from '../components/PlayerList';
 
 
-const PlayerContainer = () => {
+const PlayerContainer = ({players, createPlayer, updatePlayer, deletePlayer}) => {
   return (
     <>
     <h1>This is the PlayerContainer.</h1>
-    <PlayerForm />
-    <PlayerList />
+    <PlayerForm addPlayer={createPlayer}/>
+    <PlayerList 
+    players={players}
+    updatePlayer={updatePlayer}
+    deletePlayer={deletePlayer}
+    />
     <PlayerDetails />
     </>
   )

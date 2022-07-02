@@ -8,7 +8,7 @@ const PlayerDetails = () => {
     <p>Player details go here!</p>
     <p>Player details go here!</p>
     </>
-   
+   //pop up with more informtion
   )
 }
 
