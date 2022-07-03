@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './FormAndList.css';
 
 const PlayerForm = ({createPlayer}) => {
  
@@ -23,8 +24,8 @@ const PlayerForm = ({createPlayer}) => {
   }
 
   return  (
-    <form onSubmit={handleSubmit}>
-      <h1>Add a Player</h1>
+    <form id="form" onSubmit={handleSubmit}>
+      <h1>Add New Player</h1>
       <div className="group">
         <label htmlFor="name">Player Name:</label>
         <input 
