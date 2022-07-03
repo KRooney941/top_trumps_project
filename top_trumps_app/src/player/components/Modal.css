@@ -54,7 +54,7 @@
 
 .modalContainer .footer button {
   width: 150px;
-  height: 45px;
+  height: 60px;
   margin: 10px;
   border: none;
   background-color: cornflowerblue;
@@ -67,3 +67,5 @@
 #cancelBtn {
   background-color: crimson;
 }
+
+#deleteBtn {background-color: crimson;}

@@ -2,7 +2,12 @@ import React from "react";
 import "./Modal.css";
 import PlayerContainer from "../container/PlayerContainer"
 
-function Modal({ setOpenModal }) {
+function Modal({ setOpenModal, deletePlayer, player }) {
+
+  const handleDeletePlayer = () => {
+    deletePlayer(player._id);
+  }
+
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -31,6 +36,9 @@ function Modal({ setOpenModal }) {
             Cancel
           </button>
           <button>Update</button>
+          <button id="deleteBtn" onClick={handleDeletePlayer}>
+        <span>❌</span> Delete Player
+      </button>
         </div>
       </div>
     </div>
