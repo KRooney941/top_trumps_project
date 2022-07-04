@@ -6,7 +6,7 @@ import GameContainer from './game/containers/GameContainer';
 import HomePageContainer from './HomePageContainer';
 import PlayerService from './player/services/PlayerService';
 import Player from './player/components/Player';
-
+import PlayerDetails from './player/components/PlayerDetails';
 
 
 
@@ -47,6 +47,11 @@ function App() {
         <Route exact path= '/player' element={<PlayerContainer 
         players={players}
         createPlayer={createPlayer}
+        updatePlayer={updatePlayer}
+        deletePlayer={deletePlayer}
+        />} />
+        <Route exact path='/playerdetails' element= {<PlayerDetails
+        players={players}
         updatePlayer={updatePlayer}
         deletePlayer={deletePlayer}
         />} />
