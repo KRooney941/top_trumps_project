@@ -1,5 +1,6 @@
 import React from 'react';
 import Player from "./Player"
+import './FormAndList.css';
 
 const PlayerList = ({players, updatePlayer, deletePlayer}) => {
   const playerNodes= players.map(player => {

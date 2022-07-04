@@ -1,8 +1,8 @@
+import {Link } from "react-router-dom";
+
 const Player = ({player, deletePlayer}) => {
 
-const handleDeletePlayer = () => {
-    deletePlayer(player._id);
-  }
+
 
   return (
     <div className="player-info">
@@ -10,9 +10,10 @@ const handleDeletePlayer = () => {
       {/* <p>Wins:{player.wins}</p>
       <p>Draws:{player.draws}</p>
       <p>Losses:{player.losses}</p> */}
-      <button onClick={handleDeletePlayer}>
-        <span>❌</span> Delete Player
-      </button>
+      <Link to="/playerdetails"><button>
+              Update Player 
+            </button>
+      </Link>
     </div>
   )
 };
