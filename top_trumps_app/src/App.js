@@ -24,7 +24,7 @@ function App() {
       .then(savedPlayer => setPlayers([ ...players, savedPlayer ]));
   };
 
-  const updatePlayer = updatedPlayer => {
+  const updatePlayer = (updatedPlayer) => {
     PlayerService.updatePlayer(updatedPlayer);
 
     const updatedPlayerIndex = players.findIndex(player => player._id === updatedPlayer._id);

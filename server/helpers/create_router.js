@@ -68,7 +68,7 @@ const createRouter = function (collection) {
     const updatedData = req.body;
     collection
     .updateOne(
-      {_id: ObjectID(id)},
+      {_id: ObjectId(id)},
       {$set: updatedData}
     )
     .then((result) => {
