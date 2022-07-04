@@ -1,26 +1,26 @@
 import React from 'react';
 import Card from './Card';
 
-const PlayerDeck = () => {
+const PlayerDeck = ({playerDeck}) => {
 
-    return (
-        <h2>fjgdfjg</h2>
-    )
 
-    // const cardsList = cards.map((card, index)=>{
-    //     return (
-    //         <>
-    //             <Card card={card} key={index}/>
-    //         </>
-    //     )
-    // });
+
+    const cardsList = playerDeck.map((card, index)=>{
+        return (
+            <>
+
+                <Card card={card} key={index}/> 
+            </>
+        )
+    });
     
-    // return (
-    //      <>
-    //      <p>Player Deck</p>
-    //     {/* {cardsList} */}
-    //     </>
-    // );
+    return (
+         <>
+         <p>Player Deck</p>
+        
+            {cardsList}
+        </>
+    );
     
     
 }

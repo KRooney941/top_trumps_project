@@ -14,17 +14,72 @@ function App() {
 
   const [players, setPlayers] = useState([]);
   const [cards, setCards] = useState([]);
+  const [playerDeck, setPlayerDeck] = useState([
+//     {
+//       name: "Cammy",
+//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
+//       skills: [ {"power": 40},
+//     {"top_spin": 40},
+//     {"back_spin": 10},
+//     {"smash": 10},
+// ]},
+// {
+//       name: "Chris",
+//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
+//       skills: [ {"power": 25},
+//     {"top_spin": 25},
+//     {"back_spin": 40},
+//     {"smash": 10},
+// ]},
+//     {
+//       name: "Nadia",
+//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
+//       skills: [ {"power": 20},
+//      {"top_spin": 20},
+//      {"back_spin": 30},
+//      {"smash": 30},
+//     ]},
+//     {
+//       name: "Nick",
+//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
+//       skills: [ {"power": 20},
+//      {"top_spin": 20},
+//      {"back_spin": 50},
+//      {"smash": 10},
+//     ]},
+//     {
+//       name: "Shuna",
+//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
+//       skills: [ {"power": 25},
+//      {"top_spin": 25},
+//      {"back_spin": 20},
+//      {"smash": 30},
+//     ]},
+  ]);
   
 
-  useEffect(() => {
-    PlayerService.getPlayers()
-      .then(players => setPlayers(players))
-  }, []);
+  // useEffect(() => {
+  //   PlayerService.getPlayers()
+  //     .then(players => setPlayers(players))
+  // }, []);
 
   useEffect(() => {
     GameService.getCards()
       .then(cards => setCards(cards))
+      .then(() => {
+        addToDeck()
+      })
   }, []);
+
+  const addToDeck = () => {
+    // console.log(cards[0])
+    const playerDeckCopy = []
+    for (let i = 0; i < 5; i++){
+      const randomIndex = Math.floor(Math.random() * cards.length) 
+      playerDeckCopy.push(cards[randomIndex])
+    }
+    setPlayerDeck(playerDeckCopy);
+  }
 
   const createPlayer = newPlayer => {
     PlayerService.addPlayer(newPlayer)
@@ -48,7 +103,7 @@ function App() {
   }
 
   
-
+  
 
 
   return (
@@ -57,7 +112,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer 
-        cards={cards}/>} />
+        playerDeck={playerDeck}/>} />
         <Route exact path= '/player' element={<PlayerContainer 
         players={players}
         addPlayer={createPlayer}
@@ -65,9 +120,17 @@ function App() {
         deletePlayer={deletePlayer}
         />} />
       </Routes>
+
+      <>
+      {console.log(playerDeck)}
+
+
+    </>
       
     </Router>
+    
   );
+  
 };
 
 export default App;
