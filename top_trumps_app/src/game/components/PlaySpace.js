@@ -1,13 +1,22 @@
 import React from "react";
 import PlayerDeck from "./PlayerDeck";
 
-const PlaySpace = () => {
+const PlaySpace = ({cards}) => {
+
+  const cardsList = cards.map((card, index)=>{
+    return (
+        <>
+            <PlayerDeck card={card} key={card._id} value={index}/>
+        </>
+    )
+});
+
   return (
-    <>
-    <h2>This is the PlaySpace.</h2>
-    <PlayerDeck />
-    </>
-  )
+      <>
+          {cardsList}
+      </>
+  );
+
 };
 
 export default PlaySpace;
