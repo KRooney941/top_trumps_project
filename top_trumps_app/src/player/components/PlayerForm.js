@@ -8,7 +8,7 @@ const PlayerForm = ({createPlayer}) => {
     avatar: "",
     wins: 0,
     draws: 0,
-    loses:0,
+    losses:0,
     deck: []
   })
 

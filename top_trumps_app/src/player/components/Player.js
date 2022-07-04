@@ -10,7 +10,7 @@ const Player = ({player, deletePlayer}) => {
       {/* <p>Wins:{player.wins}</p>
       <p>Draws:{player.draws}</p>
       <p>Losses:{player.losses}</p> */}
-      <Link to="/playerdetails"><button>
+      <Link to="/playerdetails/" state={{ player: player}}><button>
               Update Player 
             </button>
       </Link>
