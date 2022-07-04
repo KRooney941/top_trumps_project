@@ -5,21 +5,36 @@ import PlayerContainer from './player/container/PlayerContainer';
 import GameContainer from './game/containers/GameContainer';
 import HomePageContainer from './HomePageContainer';
 import PlayerService from './player/services/PlayerService';
+
+import GameService from './game/services/GameService';
+
+
 import Player from './player/components/Player';
 import PlayerDetails from './player/components/PlayerDetails';
+
 
 
 
 function App() {
 
   const [players, setPlayers] = useState([]);
+  const [cards, setCards] = useState([]);
+  
 
   useEffect(() => {
     PlayerService.getPlayers()
       .then(players => setPlayers(players))
   }, [players]);
 
+
+  useEffect(() => {
+    GameService.getCards()
+      .then(cards => setCards(cards))
+  }, []);
+
+
   const createPlayer = (newPlayer) => {
+
     PlayerService.addPlayer(newPlayer)
       .then(savedPlayer => setPlayers([ ...players, savedPlayer ]));
   };
@@ -38,12 +53,14 @@ function App() {
     setPlayers(players.filter(player => player._id !== idToDelete));
   }
 
+
   return (
 
     <Router>
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
-        <Route exact path='/game' element={< GameContainer />} />
+        <Route exact path='/game' element={< GameContainer 
+        cards={cards}/>} />
         <Route exact path= '/player' element={<PlayerContainer 
         players={players}
         createPlayer={createPlayer}

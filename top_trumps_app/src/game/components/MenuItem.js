@@ -1,8 +1,11 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const MenuItem = () => {
   return (
-    <h4>User Button Here</h4>
+    <>
+    <Link to="/">Home</Link>
+    </>
   )
 }
 

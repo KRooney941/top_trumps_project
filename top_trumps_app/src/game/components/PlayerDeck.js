@@ -1,11 +1,16 @@
 import React from 'react';
 
-const PlayerDeck = () => {
-    return (
+const PlayerDeck = ({card}) => {
+
+    return(
         <>
-        <h3>Players deck of cards will appear here</h3>
+        <p>{card.name}</p>
+        <img className="image" src={card.sprite} alt={card.name} width="100px" />
+        {/* <p>{card.skills}</p> */}
+        
         </>
     )
+    
 }
 
 export default PlayerDeck;
