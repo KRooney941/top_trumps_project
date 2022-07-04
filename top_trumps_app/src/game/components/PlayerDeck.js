@@ -1,15 +1,27 @@
 import React from 'react';
+import Card from './Card';
 
-const PlayerDeck = ({card}) => {
+const PlayerDeck = () => {
 
-    return(
-        <>
-        <p>{card.name}</p>
-        <img className="image" src={card.sprite} alt={card.name} width="100px" />
-        {/* <p>{card.skills}</p> */}
-        
-        </>
+    return (
+        <h2>fjgdfjg</h2>
     )
+
+    // const cardsList = cards.map((card, index)=>{
+    //     return (
+    //         <>
+    //             <Card card={card} key={index}/>
+    //         </>
+    //     )
+    // });
+    
+    // return (
+    //      <>
+    //      <p>Player Deck</p>
+    //     {/* {cardsList} */}
+    //     </>
+    // );
+    
     
 }
 
