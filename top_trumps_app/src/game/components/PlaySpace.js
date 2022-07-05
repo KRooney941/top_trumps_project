@@ -1,22 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import PlayerDeck from "./PlayerDeck";
+import PlaySpaceCard from "./PlaySpaceCard";
+
 import './PlaySpace.css';
 
-const PlaySpace = ( ) => {
+const PlaySpace = ({getSkill, selectedSkill, startGame}) => {
 
-  
+    const handleClick = () => {
+      startGame()
+    }
+
+    const [selectedPlayerCard, setSelectedPlayerCard] = useState(
+        {
+            name: "Simona",
+            sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
+            skills: [ {"power": 40},
+           {"top_spin": 20},
+           {"back_spin": 10},
+           {"smash": 30},
+          ]}
+    )
+
+    console.log(selectedSkill)    
 
   return (
 
     <>
       <div className="play-space">
           <h3>Player Score:</h3>
-          <img className="card-front"
-            src="https://i.ibb.co/svx8mwH/card-back.png"
-            alt="Back of Card"></img> 
-            <img className="card-back"
-            src="https://i.ibb.co/svx8mwH/card-back.png"
-            alt="Back of Card"></img> 
+          <PlaySpaceCard selectedCard={selectedPlayerCard} getSkill={getSkill}/>
+          {selectedSkill ? <p>{Object.keys(selectedSkill)}</p>: <p>Not Selected</p>}
+          {selectedSkill ? <button onClick={handleClick}>PLAY ROUND</button>: null}
         </div>
 
         </>

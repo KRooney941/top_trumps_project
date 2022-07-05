@@ -51,6 +51,7 @@ function App() {
       const randomIndexComp = Math.floor(Math.random() * cards.length)
       compDeckCopy.push(cards[randomIndexComp])
     }
+
     setCompDeck(compDeckCopy);
   }
 
@@ -91,6 +92,22 @@ function App() {
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer
+
+          playerDeck={playerDeck} />} />
+        <Route exact path= '/player' element={<PlayerContainer 
+        players={players}
+        createPlayer={createPlayer}
+        updatePlayer={updatePlayer}
+        deletePlayer={deletePlayer}
+        // onPlayerSelected={onPlayerSelected} 
+        />} />
+        <Route exact path='/playerdetails' element= {<PlayerDetails
+        players={players}
+        updatePlayer={updatePlayer}
+        deletePlayer={deletePlayer}
+        selectedPlayer={selectedPlayer}
+        // onPlayerSelected={onPlayerSelected} 
+
           playerDeck={playerDeck}
           selectedPlayer={selectedPlayer}
           compDeck={compDeck} />} />
@@ -106,6 +123,7 @@ function App() {
           players={players}
           updatePlayer={updatePlayer}
           deletePlayer={deletePlayer}
+
         />} />
       </Routes>
 

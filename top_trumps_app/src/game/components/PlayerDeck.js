@@ -1,14 +1,14 @@
 import React from 'react';
-import Card from './Card';
+import Card from './PlaySpaceCard';
+import DeckCard from './DeckCard';
 
 
-const PlayerDeck = ({ playerDeck }) => {
+const PlayerDeck = ({ playerCards, getSelectedPlayerCard }) => {
 
-
-    const cardsList = playerDeck.map((card, index)=>{
+    const cardsList = playerCards.map((card, index)=>{
         return (
             <>
-                <Card card={card} key={index}/>
+                <DeckCard card={card} key={index} getSelectedPlayerCard={getSelectedPlayerCard}/>
             </>
         )
     });
@@ -17,7 +17,7 @@ const PlayerDeck = ({ playerDeck }) => {
 
             <p>Player Deck</p>
 
-            {cardsList}
+            {cardsList} 
         </>
     );
 
