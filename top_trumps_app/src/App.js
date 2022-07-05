@@ -60,8 +60,8 @@ function App() {
       compDeckCopy.push(cards[randomIndexComp])
     }
 
-    console.log(playerDeckCopy)
-    console.log(compDeckCopy);
+    // console.log(playerDeckCopy)
+    // console.log(compDeckCopy);
     setCompDeck(compDeckCopy);
     setPlayerDeck(playerDeckCopy);
   }
@@ -102,14 +102,14 @@ function App() {
         createPlayer={createPlayer}
         updatePlayer={updatePlayer}
         deletePlayer={deletePlayer}
-        onPlayerSelected={onPlayerSelected} 
+        // onPlayerSelected={onPlayerSelected} 
         />} />
         <Route exact path='/playerdetails' element= {<PlayerDetails
         players={players}
         updatePlayer={updatePlayer}
         deletePlayer={deletePlayer}
         selectedPlayer={selectedPlayer}
-        onPlayerSelected={onPlayerSelected} 
+        // onPlayerSelected={onPlayerSelected} 
         />} />
       </Routes>
 

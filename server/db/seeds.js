@@ -94,6 +94,14 @@ db.players.insertMany([
    {"smash": 15},
 ]},
 {
+  name: "Gillian",
+  sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
+  skills: [ {"power": 30},
+ {"top_spin": 20},
+ {"back_spin": 30},
+ {"smash": 20},
+]},
+{
   name: "Iain H",
   sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
   skills: [ {"power": 50},
