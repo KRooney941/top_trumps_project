@@ -2,14 +2,14 @@ import React from 'react';
 
 const PlaySpaceCard = ({selectedCard, getSkill}) => {
 
-    const handleSkillSelect = (index) => {
-      getSkill(index)
+    const handleSkillSelect = (skillTopic) => {
+      getSkill(skillTopic)
     }
 
     const showSkills = selectedCard.skills.map((skill, index) => {
       return (
         <button onClick={ () => {
-            handleSkillSelect(index)
+            handleSkillSelect(Object.keys(skill))
         }  }key={index} >{Object.keys(skill)}: {skill[Object.keys(skill)]}</button>
       )
     })

@@ -52,8 +52,8 @@ const GameContainer = ({playerDeck}) => {
   const [selectedPlayerCard, setSelectedPlayerCard] = useState();
   const [selectedSkill, setSelectedSkill] = useState()
 
-  const getSkill = (index) => {
-    setSelectedSkill(selectedPlayerCard.skills[index])
+  const getSkill = (skillTopic) => {
+    setSelectedSkill(skillTopic[0])
   }
 
   const getSelectedPlayerCard = (card) => {
