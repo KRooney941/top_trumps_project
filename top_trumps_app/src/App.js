@@ -92,39 +92,23 @@ function App() {
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer
-
-          playerDeck={playerDeck} />} />
-        <Route exact path= '/player' element={<PlayerContainer 
-        players={players}
-        createPlayer={createPlayer}
-        updatePlayer={updatePlayer}
-        deletePlayer={deletePlayer}
-        // onPlayerSelected={onPlayerSelected} 
-        />} />
-        <Route exact path='/playerdetails' element= {<PlayerDetails
-        players={players}
-        updatePlayer={updatePlayer}
-        deletePlayer={deletePlayer}
-        selectedPlayer={selectedPlayer}
-        // onPlayerSelected={onPlayerSelected} 
-
-          playerDeck={playerDeck}
+          compDeck={compDeck}
           selectedPlayer={selectedPlayer}
-          compDeck={compDeck} />} />
+          playerDeck={playerDeck} />} />
         <Route exact path='/player' element={<PlayerContainer
           players={players}
           createPlayer={createPlayer}
           updatePlayer={updatePlayer}
           deletePlayer={deletePlayer}
-          selectedPlayer={selectedPlayer}
           onPlayerSelected={onPlayerSelected}
         />} />
         <Route exact path='/playerdetails' element={<PlayerDetails
           players={players}
           updatePlayer={updatePlayer}
           deletePlayer={deletePlayer}
-
-        />} />
+          selectedPlayer={selectedPlayer}
+          playerDeck={playerDeck}
+          compDeck={compDeck} />} />
       </Routes>
 
     </Router>
