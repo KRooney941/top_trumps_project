@@ -83,6 +83,13 @@ function App() {
     setSelectedPlayer(player);
   };
 
+  const removeSelectedCardFromDeck = (card) => {
+    let playerDeckCopy = [...playerDeck]
+    playerDeckCopy.splice(card, 1)
+    setPlayerDeck(playerDeckCopy)
+    // console.log(playerCards)
+  }
+
   // console.log(cards)
 
 
@@ -94,7 +101,8 @@ function App() {
         <Route exact path='/game' element={< GameContainer
           compDeck={compDeck}
           selectedPlayer={selectedPlayer}
-          playerDeck={playerDeck} />} />
+          playerDeck={playerDeck}
+          removeSelectedCardFromDeck={removeSelectedCardFromDeck} />} />
         <Route exact path='/player' element={<PlayerContainer
           players={players}
           createPlayer={createPlayer}
