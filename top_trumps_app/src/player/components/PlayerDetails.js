@@ -15,7 +15,7 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
   const [formData, setFormData] = useState({
     _id: player._id,
     name: "",
-    avatar: "",
+    avatar: player.avatar,
     wins: player.wins,
     draws: player.draws,
     losses: player.losses,
@@ -36,7 +36,7 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
     console.log(newFormData)
   }
 
-
+  console.log(player.avatar)
   return (
     <>
       <h1>{player.name}</h1>
@@ -45,7 +45,7 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
         <p>Wins:{player.wins}</p>
         <p>Losses:{player.losses}</p>
         <p>Draws:{player.draws}</p>
-        <img src={player.avatar} alt="avatar" />
+        <img src="https://i.ibb.co/Hq9Ftz5/kieran-placeholder.jpg" alt="avatar" />
         <div className="group">
           <label htmlFor="name">Player Name:</label>
           <input
