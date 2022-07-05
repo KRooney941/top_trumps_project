@@ -2,13 +2,14 @@ import React from 'react';
 import Player from "./Player"
 import './FormAndList.css';
 
-const PlayerList = ({players, updatePlayer, deletePlayer}) => {
+const PlayerList = ({players, updatePlayer, deletePlayer, onPlayerClick}) => {
   const playerNodes= players.map(player => {
     return <Player
       key={player.id}
       player={player}
       updatePlayer={updatePlayer}
       deletePlayer={deletePlayer}
+      onPlayerClick={onPlayerClick} 
   />
   });
   
