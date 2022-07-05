@@ -1,13 +1,20 @@
 import React from 'react';
+import Card from './Card';
 
-const PlayerDeck = ({card}) => {
+const PlayerDeck = ({playerCards}) => {
+
+    const cardsList = playerCards.map((card, index)=>{
+        return (
+            <>
+                <Card card={card} key={index}/>
+            </>
+        )
+    });
 
     return(
         <>
-        <p>{card.name}</p>
-        <img className="image" src={card.sprite} alt={card.name} width="100px" />
-        {/* <p>{card.skills}</p> */}
         
+        {cardsList}
         </>
     )
     

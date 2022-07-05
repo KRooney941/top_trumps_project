@@ -5,6 +5,9 @@ const MenuItem = () => {
   return (
     <>
     <Link to="/">Home</Link>
+    
+	    <button className='home-button'><span>HOME</span></button>
+    
     </>
   )
 }

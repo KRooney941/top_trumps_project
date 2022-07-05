@@ -1,0 +1,26 @@
+.play-space {float:left; margin:50px}
+
+.card-front {
+    -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  box-shadow: 5px 5px 25px #383737;
+  display:inline-flex;
+  margin-inline: 150px;
+}
+
+.card-back {
+    -moz-box-shadow: 10px 10px 5px #ccc;
+  -webkit-box-shadow: 10px 10px 5px #ccc;
+  box-shadow: 5px 5px 25px #383737;
+  display:inline-flex;
+}
+
+.play-space {
+    border-radius: 25px;
+    border: 2px solid whitesmoke;
+    padding: 20px; 
+    width: 900px;
+    height: 500px;
+    margin-top: -5px;
+}
+
