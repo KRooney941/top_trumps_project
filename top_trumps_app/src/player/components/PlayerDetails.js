@@ -15,7 +15,7 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
   const [formData, setFormData] = useState({
     _id: player._id,
     name: "",
-    avatar: "{player.avatar}",
+    avatar: "",
     wins: player.wins,
     draws: player.draws,
     losses: player.losses,

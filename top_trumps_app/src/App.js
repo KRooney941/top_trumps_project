@@ -87,9 +87,10 @@ function App() {
     setPlayers(players.filter(player => player._id !== idToDelete));
   }
 
-  const onPlayerSelected = () => {
-    return console.log("hello");
-  }
+  const onPlayerSelected = (player) => {
+    console.log(player);
+    setSelectedPlayer(player);
+  };
 
   // console.log(cards)
 
@@ -100,20 +101,20 @@ function App() {
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer
-          playerDeck={playerDeck} />} />
+          playerDeck={playerDeck}
+          selectedPlayer={selectedPlayer} />} />
         <Route exact path='/player' element={<PlayerContainer
           players={players}
           createPlayer={createPlayer}
           updatePlayer={updatePlayer}
           deletePlayer={deletePlayer}
+          selectedPlayer={selectedPlayer}
           onPlayerSelected={onPlayerSelected}
         />} />
         <Route exact path='/playerdetails' element={<PlayerDetails
           players={players}
           updatePlayer={updatePlayer}
           deletePlayer={deletePlayer}
-          selectedPlayer={selectedPlayer}
-          onPlayerSelected={onPlayerSelected}
         />} />
       </Routes>
 
