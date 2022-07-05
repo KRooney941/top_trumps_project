@@ -14,17 +14,16 @@ import PlayerDetails from './player/components/PlayerDetails';
 
 
 
-
 function App() {
 
   const [players, setPlayers] = useState([]);
   const [cards, setCards] = useState([]);
-
+  const [playerDeck, setPlayerDeck] = useState([]);
+  const [compDeck, setCompDeck] = useState([]);
   const [selectedPlayer, setSelectedPlayer] = useState(null)
 
-  const [playerCards, setPlayerCards] = useState([]);
-
   
+
 
   useEffect(() => {
     PlayerService.getPlayers()
@@ -35,26 +34,43 @@ function App() {
   useEffect(() => {
     GameService.getCards()
       .then(cards => setCards(cards))
-      .then(()=>{
-        addToDeck();
-      })
+
+
+      
   }, []);
 
-  const addToDeck =() => {
-    const playerCardsCopy =[];
-    for (let i = 0; i<5;i++){
-      const randomIndex = Math.floor(Math.random() * cards.length)
-      playerCardsCopy.push(cards[randomIndex]);
-    }
-    console.log(playerCardsCopy);
-    setPlayerCards(playerCardsCopy);
-  }
 
+  useEffect(() => {
+    GameService.getCards()
+      .then(cards => addToDeck(cards))
+  }, [])
+
+
+
+  const addToDeck = (cards) => {
+
+    console.log(players)
+    const playerDeckCopy = []
+    const compDeckCopy = []
+    for (let i = 0; i < 5; i++) {
+      const randomIndexPlayer = Math.floor(Math.random() * cards.length)
+      const randomIndexComp = Math.floor(Math.random() * cards.length)
+      //console.log(randomIndex);
+      playerDeckCopy.push(cards[randomIndexPlayer])
+      compDeckCopy.push(cards[randomIndexComp])
+    }
+
+    console.log(playerDeckCopy)
+    console.log(compDeckCopy);
+    setCompDeck(compDeckCopy);
+    setPlayerDeck(playerDeckCopy);
+  }
 
   const createPlayer = (newPlayer) => {
 
+
     PlayerService.addPlayer(newPlayer)
-      .then(savedPlayer => setPlayers([ ...players, savedPlayer ]));
+      .then(savedPlayer => setPlayers([...players, savedPlayer]));
   };
 
   const updatePlayer = (updatedPlayer) => {
@@ -71,7 +87,6 @@ function App() {
     setPlayers(players.filter(player => player._id !== idToDelete));
   }
 
-
   // console.log(cards)
 
 
@@ -80,8 +95,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
-        <Route exact path='/game' element={< GameContainer 
-        playerCards={playerCards}/>} />
+        <Route exact path='/game' element={< GameContainer
+          playerDeck={playerDeck} />} />
         <Route exact path= '/player' element={<PlayerContainer 
         players={players}
         createPlayer={createPlayer}
@@ -97,9 +112,11 @@ function App() {
         onPlayerSelected={onPlayerSelected} 
         />} />
       </Routes>
-      
+
     </Router>
+
   );
+
 };
 
 export default App;

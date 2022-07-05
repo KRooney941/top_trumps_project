@@ -4,16 +4,13 @@ import MenuItem from '../components/MenuItem';
 import PlayerDeck from '../components/PlayerDeck';
 
 
-
-
-const GameContainer = ({playerCards}) => {
+const GameContainer = ({playerDeck}) => {
 
   return (
     <>
     <MenuItem />
     <h1>This is the GameContainer.</h1>
-    <PlaySpace />
-    <PlayerDeck playerCards={playerCards}/>
+    <PlayerDeck playerDeck={playerDeck} />
     </>
   )
 };

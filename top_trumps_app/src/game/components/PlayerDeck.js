@@ -1,23 +1,27 @@
 import React from 'react';
 import Card from './Card';
 
-const PlayerDeck = ({playerCards}) => {
 
-    const cardsList = playerCards.map((card, index)=>{
+const PlayerDeck = ({ playerDeck }) => {
+
+
+    const cardsList = playerDeck.map((card, index)=>{
         return (
             <>
                 <Card card={card} key={index}/>
             </>
         )
     });
-
-    return(
+    return (
         <>
-        
-        {cardsList}
+
+            <p>Player Deck</p>
+
+            {cardsList}
         </>
-    )
-    
+    );
+
+
 }
 
 export default PlayerDeck;
