@@ -3,14 +3,13 @@ import PlaySpace from '../components/PlaySpace';
 import MenuItem from '../components/MenuItem';
 import PlayerDeck from '../components/PlayerDeck';
 
-const GameContainer = ({cards}) => {
+const GameContainer = ({playerCards}) => {
   return (
     <>
     <MenuItem />
     <h1>This is the GameContainer.</h1>
-    <PlaySpace
-      cards={cards}
-    />
+    <PlaySpace />
+    <PlayerDeck playerCards={playerCards}/>
     </>
   )
 };
