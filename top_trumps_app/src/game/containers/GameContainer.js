@@ -4,7 +4,7 @@ import MenuItem from '../components/MenuItem';
 import PlayerDeck from '../components/PlayerDeck';
 
 
-const GameContainer = ({playerDeck}) => {
+const GameContainer = ({ playerDeck, selectedPlayer, compDeck }) => {
 
   const [playerCards, setPlayerCards] = useState([
    {
@@ -75,9 +75,11 @@ const GameContainer = ({playerDeck}) => {
 
   return (
     <>
+
     <MenuItem />
     <PlaySpace selectedPlayerCard={selectedPlayerCard} getSkill={getSkill} selectedSkill={selectedSkill} startGame={startGame}/>
     <PlayerDeck playerCards={playerCards} getSelectedPlayerCard={getSelectedPlayerCard} />
+
     </>
   )
 };
