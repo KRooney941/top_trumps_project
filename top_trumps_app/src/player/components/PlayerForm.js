@@ -24,20 +24,26 @@ const PlayerForm = ({createPlayer}) => {
   }
 
   return  (
+    <>
     <form id="form" onSubmit={handleSubmit}>
-      <h1>Add New Player</h1>
+      <h1 id='form-heading'>Add New Player</h1>
       <div className="group">
         <label htmlFor="name">Player Name:</label>
-        <input 
+        <span><input 
           type="text" 
           id="name" 
           name="name"
           required 
           onChange={onChange}
         />
+         <input type="submit" name="submit" value="Save" /></span>
       </div>
-      <input type="submit" name="submit" value="Save" />
+     
+      <option>Choose an avatar:</option>
     </form>
+
+   
+    </>
   );
 }
 

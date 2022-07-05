@@ -15,7 +15,7 @@ const PlayerList = ({players, updatePlayer, deletePlayer, onPlayerClick}) => {
   
   return (
     <section id="players">
-      <h2>Player List</h2>
+      <h2 id='player-list'>Player List</h2>
       <div id="players-wrapper">
         {playerNodes}
       </div>

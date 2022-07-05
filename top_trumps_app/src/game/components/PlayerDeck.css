@@ -1,0 +1,4 @@
+.player-cards{
+    display: inline-flex;
+    justify-content: space-between;
+}

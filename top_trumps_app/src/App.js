@@ -19,19 +19,36 @@ function App() {
 
   const [players, setPlayers] = useState([]);
   const [cards, setCards] = useState([]);
+
   const [selectedPlayer, setSelectedPlayer] = useState(null)
+
+  const [playerCards, setPlayerCards] = useState([]);
+
   
 
   useEffect(() => {
     PlayerService.getPlayers()
       .then(players => setPlayers(players))
-  }, [players]);
+  }, []);
 
 
   useEffect(() => {
     GameService.getCards()
       .then(cards => setCards(cards))
+      .then(()=>{
+        addToDeck();
+      })
   }, []);
+
+  const addToDeck =() => {
+    const playerCardsCopy =[];
+    for (let i = 0; i<5;i++){
+      const randomIndex = Math.floor(Math.random() * cards.length)
+      playerCardsCopy.push(cards[randomIndex]);
+    }
+    console.log(playerCardsCopy);
+    setPlayerCards(playerCardsCopy);
+  }
 
 
   const createPlayer = (newPlayer) => {
@@ -54,9 +71,8 @@ function App() {
     setPlayers(players.filter(player => player._id !== idToDelete));
   }
 
-  const onPlayerSelected = function(munro){
-    setSelectedPlayer(munro);
-}
+
+  // console.log(cards)
 
 
   return (
@@ -65,7 +81,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer 
-        cards={cards}/>} />
+        playerCards={playerCards}/>} />
         <Route exact path= '/player' element={<PlayerContainer 
         players={players}
         createPlayer={createPlayer}
