@@ -11,6 +11,8 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck, removeSelectedCar
 
   const [selectedPlayerCard, setSelectedPlayerCard] = useState();
   const [selectedSkill, setSelectedSkill] = useState()
+  const [turn, setTurn] = useState();
+  const [playerTurn, setPlayerTurn] = useState(true)
 
   const getSkill = (skillTopic) => {
     setSelectedSkill(skillTopic[0])
@@ -21,14 +23,34 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck, removeSelectedCar
     removeSelectedCardFromDeck(card)
   }
 
+  const incrementTurn = () => {
+    const turnCopy = turn + 1;
+    setTurn(turnCopy)
+  }
+
+  const turnDecider = () => {
+    if (turn % 2) {
+      setPlayerTurn(true)
+    } else {
+      setPlayerTurn(false)
+    }
+  }
+
   const startGame = () => {
     const compCard = cardSelectorComp(compDeck);
-    const compValue = skillSelectorCompFromPlayerSkill(compCard, selectedSkill);
-    const playerValue = skillSelectorCompFromPlayerSkill(selectedPlayerCard, selectedSkill);
-    compareSkills(playerValue, compValue);
+    if (playerTurn) {
+      const compValue = skillSelectorCompFromPlayerSkill(compCard, selectedSkill);
+      const playerValue = skillSelectorCompFromPlayerSkill(selectedPlayerCard, selectedSkill);
+      compareSkills(playerValue, compValue);
+    } else {
+      const compValue = skillSelectorCompRandom(compDeck)
+      const playerValue = skillSelectorCompFromPlayerSkill(selectedPlayerCard, selectedSkill);
+      compareSkills(playerValue, compValue);
+    }
+    incrementTurn();
+    turnDecider();
     setSelectedPlayerCard(null);
     setSelectedSkill(null);
-
   }
 
 

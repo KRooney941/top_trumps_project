@@ -75,7 +75,9 @@ export const skillSelectorCompRandom = (compDeck) => {
     const skills = selectedCard.skills
     const randomSkillIndex = Math.floor(Math.random() * skills.length)
     const selectedSkill = skills[randomSkillIndex];
-    return selectedSkill;
+    const key = Object.keys(selectedSkill)[0];
+    console.log(selectedSkill);
+    return selectedSkill[key];
 }
 
 export const skillSelectorCompFromPlayerSkill = (selectedCard, topic) => {
