@@ -34,36 +34,24 @@ function App() {
   useEffect(() => {
     GameService.getCards()
       .then(cards => setCards(cards))
-
-
-
   }, []);
 
-
-  useEffect(() => {
-    GameService.getCards()
-      .then(cards => addToDeck(cards))
-  }, [])
-
-
-
-  const addToDeck = (cards) => {
-
-    console.log(players)
+  const addToPlayerDeck = (cards) => {
     const playerDeckCopy = []
-    const compDeckCopy = []
     for (let i = 0; i < 5; i++) {
       const randomIndexPlayer = Math.floor(Math.random() * cards.length)
-      const randomIndexComp = Math.floor(Math.random() * cards.length)
-      //console.log(randomIndex);
       playerDeckCopy.push(cards[randomIndexPlayer])
+    }
+    setPlayerDeck(playerDeckCopy);
+  }
+
+  const addToCompDeck = (cards) => {
+    const compDeckCopy = [];
+    for (let i = 0; i < 5; i++) {
+      const randomIndexComp = Math.floor(Math.random() * cards.length)
       compDeckCopy.push(cards[randomIndexComp])
     }
-
-    console.log(playerDeckCopy)
-    console.log(compDeckCopy);
     setCompDeck(compDeckCopy);
-    setPlayerDeck(playerDeckCopy);
   }
 
   const createPlayer = (newPlayer) => {
@@ -89,6 +77,8 @@ function App() {
 
   const onPlayerSelected = (player) => {
     console.log(player);
+    addToCompDeck(cards)
+    addToPlayerDeck(cards)
     setSelectedPlayer(player);
   };
 
@@ -102,7 +92,8 @@ function App() {
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer
           playerDeck={playerDeck}
-          selectedPlayer={selectedPlayer} />} />
+          selectedPlayer={selectedPlayer}
+          compDeck={compDeck} />} />
         <Route exact path='/player' element={<PlayerContainer
           players={players}
           createPlayer={createPlayer}
