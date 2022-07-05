@@ -5,7 +5,12 @@ import PlayerContainer from './player/container/PlayerContainer';
 import GameContainer from './game/containers/GameContainer';
 import HomePageContainer from './HomePageContainer';
 import PlayerService from './player/services/PlayerService';
+
 import GameService from './game/services/GameService';
+
+
+import Player from './player/components/Player';
+import PlayerDetails from './player/components/PlayerDetails';
 
 
 
@@ -15,6 +20,9 @@ function App() {
   const [cards, setCards] = useState([]);
   const [playerDeck, setPlayerDeck] = useState([]);
   const [compDeck, setCompDeck] = useState([]);
+  const [selectedPlayer, setSelectedPlayer] = useState(null)
+
+  
 
 
   useEffect(() => {
@@ -22,10 +30,15 @@ function App() {
       .then(players => setPlayers(players))
   }, []);
 
+
   useEffect(() => {
     GameService.getCards()
       .then(cards => setCards(cards))
+
+
+      
   }, []);
+
 
   useEffect(() => {
     GameService.getCards()
@@ -53,12 +66,14 @@ function App() {
     setPlayerDeck(playerDeckCopy);
   }
 
-  const createPlayer = newPlayer => {
+  const createPlayer = (newPlayer) => {
+
+
     PlayerService.addPlayer(newPlayer)
       .then(savedPlayer => setPlayers([...players, savedPlayer]));
   };
 
-  const updatePlayer = updatedPlayer => {
+  const updatePlayer = (updatedPlayer) => {
     PlayerService.updatePlayer(updatedPlayer);
 
     const updatedPlayerIndex = players.findIndex(player => player._id === updatedPlayer._id);
@@ -69,13 +84,10 @@ function App() {
 
   const deletePlayer = idToDelete => {
     PlayerService.deletePlayer(idToDelete);
-
-
     setPlayers(players.filter(player => player._id !== idToDelete));
   }
 
-
-
+  // console.log(cards)
 
 
   return (
@@ -85,11 +97,19 @@ function App() {
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer
           playerDeck={playerDeck} />} />
-        <Route exact path='/player' element={<PlayerContainer
-          players={players}
-          addPlayer={createPlayer}
-          updatePlayer={updatePlayer}
-          deletePlayer={deletePlayer}
+        <Route exact path= '/player' element={<PlayerContainer 
+        players={players}
+        createPlayer={createPlayer}
+        updatePlayer={updatePlayer}
+        deletePlayer={deletePlayer}
+        onPlayerSelected={onPlayerSelected} 
+        />} />
+        <Route exact path='/playerdetails' element= {<PlayerDetails
+        players={players}
+        updatePlayer={updatePlayer}
+        deletePlayer={deletePlayer}
+        selectedPlayer={selectedPlayer}
+        onPlayerSelected={onPlayerSelected} 
         />} />
       </Routes>
 

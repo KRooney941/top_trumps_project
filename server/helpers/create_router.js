@@ -1,12 +1,11 @@
 const express = require('express');
-const ObjectID = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectId;
 
 const createRouter = function (collection) {
 
   const router = express.Router();
 
 
-  //index route
   router.get('/', (req, res) => {
     collection
       .find()
@@ -23,7 +22,7 @@ const createRouter = function (collection) {
   router.get('/:id', (req, res) => {
     const id = req.params.id;
     collection
-      .findOne({ _id: ObjectID(id) })
+      .findOne({ _id: ObjectId(id) })
       .then((doc) => res.json(doc))
       .catch((err) => {
         console.error(err);
@@ -32,7 +31,6 @@ const createRouter = function (collection) {
       });
   });
 
-  //Create route. collection is database information. puts the data from result(res is short for result) to the top of the list at the result.ops. 
   router.post('/', (req, res) => {
     const newData = req.body; 
     collection
@@ -48,11 +46,12 @@ const createRouter = function (collection) {
   });
 
 
-  //Destroy route. Use collection (this is basically our seeds) as that's what we want to change. Line 56 makes changes to json. 
+
   router.delete('/:id', (req, res) => {
     const id = req.params.id;
+    console.log(id)
     collection
-    .deleteOne({_id: ObjectID(id)})
+    .deleteOne({_id: ObjectId(id)})
     .then((docs) => result.json(docs))
     .catch((err) => {
       console.error(err);
@@ -60,14 +59,13 @@ const createRouter = function (collection) {
       res.json({ status: 500, error: err });
     });
   })
-  
-  //Update route. 
+
   router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updatedData = req.body;
     collection
     .updateOne(
-      {_id: ObjectID(id)},
+      {_id: ObjectId(id)},
       {$set: updatedData}
     )
     .then((result) => {

@@ -1,10 +1,29 @@
 import React from "react";
+import PlayerDeck from "./PlayerDeck";
+import './PlaySpace.css';
 
-const PlaySpace = () => {
+const PlaySpace = ( ) => {
 
-    return (
-        <h1>Hello, this is where the game is played</h1>
-    );
+  
+
+  return (
+
+    <>
+      <div className="play-space">
+          <h3>Player Score:</h3>
+          <img className="card-front"
+            src="https://i.ibb.co/svx8mwH/card-back.png"
+            alt="Back of Card"></img> 
+            <img className="card-back"
+            src="https://i.ibb.co/svx8mwH/card-back.png"
+            alt="Back of Card"></img> 
+        </div>
+
+        </>
+            
+
+      
+  );
 
 };
 

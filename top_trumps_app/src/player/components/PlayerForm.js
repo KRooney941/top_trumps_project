@@ -1,37 +1,50 @@
 import { useState } from 'react';
+import './FormAndList.css';
 
-
-const PlayerForm = ({addPlayer}) => {
+const PlayerForm = ({createPlayer}) => {
  
-const [name, setName] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    avatar: "",
+    wins: 0,
+    draws: 0,
+    losses:0,
+    deck: []
+  })
 
-const handleNameChange = (ev) => setName(ev.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createPlayer(formData);
+  }
 
-const handleSubmit = ev => {
-  ev.preventDefault();
-  addPlayer({
-    name: name,
-  });
-  setName("");
-}
+  const onChange = (e) => {
+    const newFormData = Object.assign({}, formData);
+    newFormData[e.target.name] = e.target.value;
+    setFormData(newFormData);
+  }
 
-return  (
-  <form onSubmit={handleSubmit}>
-    <h1>Add a Player</h1>
-    <div className="group">
-      <label htmlFor="name">Player Name:</label>
-      <input 
-        type="text" 
-        id="name" 
-        name="name" 
-        value={name} 
-        required 
-        onChange={handleNameChange}
-      />
-    </div>
-    <input type="submit" name="submit" value="Save" />
-  </form>
-);
+  return  (
+    <>
+    <form id="form" onSubmit={handleSubmit}>
+      <h1 id='form-heading'>Add New Player</h1>
+      <div className="group">
+        <label htmlFor="name">Player Name:</label>
+        <span><input 
+          type="text" 
+          id="name" 
+          name="name"
+          required 
+          onChange={onChange}
+        />
+         <input type="submit" name="submit" value="Save" /></span>
+      </div>
+     
+      <option>Choose an avatar:</option>
+    </form>
+
+   
+    </>
+  );
 }
 
 export default PlayerForm;

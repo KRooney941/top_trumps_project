@@ -1,0 +1,37 @@
+#players, #form {float:left; margin:50px}
+
+#players {
+        border-radius: 25px;
+        border: 2px solid whitesmoke;
+        padding: 20px; 
+        width: 900px;
+        height: 500px;  
+}
+
+#form {
+    
+        border-radius: 25px;
+        border: 2px solid whitesmoke;
+        padding: 20px; 
+        width: 200px;
+        height: 400px; 
+         
+}
+
+#form-heading {
+        font-size: 30pt;
+        font-family: 'Staatliches', cursive;
+        text-shadow: 5px 4px 5px #001826;
+        color: #dbfcbd;
+        line-height: 40px;
+}
+
+
+#player-list {
+        font-size: 30pt;
+        font-family: 'Staatliches', cursive;
+        text-shadow: 5px 4px 5px #001826;
+        color: #dbfcbd;
+        line-height: 40px;
+    }
+

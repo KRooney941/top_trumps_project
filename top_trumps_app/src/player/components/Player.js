@@ -1,7 +1,9 @@
-const Player = ({player, deletePlayer}) => {
+import {Link } from "react-router-dom";
 
-const handleDeletePlayer = () => {
-    deletePlayer(player._id);
+const Player = ({player, deletePlayer, onPlayerClick, selectedPlayer, updatePlayer}) => {
+
+  const handleClick = function(){
+    onPlayerClick(player);
   }
 
   return (
@@ -10,11 +12,21 @@ const handleDeletePlayer = () => {
       {/* <p>Wins:{player.wins}</p>
       <p>Draws:{player.draws}</p>
       <p>Losses:{player.losses}</p> */}
-      <button onClick={handleDeletePlayer}>
-        <span>❌</span> Delete Player
-      </button>
+      <Link  to="/playerdetails/" state={{ player: player}}><button>
+              Update Player 
+            </button>
+      </Link>
+      <Link to="/game/"><button onClick={selectedPlayer} >
+              Select Player 
+            </button>
+      </Link>
     </div>
   )
+
+
+  console.log(selectedPlayer)
 };
+
+
 
 export default Player;
