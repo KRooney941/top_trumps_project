@@ -62,7 +62,7 @@ const playerCard = {
 const topic = "power";
 
 
-const cardSelectorComp = (compDeck) => {
+export const cardSelectorComp = (compDeck) => {
     const randomCardIndex = Math.floor(Math.random() * compDeck.length)
     const selectedCard = compDeck[randomCardIndex];
     return selectedCard;
@@ -70,7 +70,7 @@ const cardSelectorComp = (compDeck) => {
 
 //getting a random skill from random card - done
 
-const skillSelectorCompRandom = (compDeck) => {
+export const skillSelectorCompRandom = (compDeck) => {
     const selectedCard = cardSelectorComp(compDeck);
     const skills = selectedCard.skills
     const randomSkillIndex = Math.floor(Math.random() * skills.length)
@@ -78,7 +78,7 @@ const skillSelectorCompRandom = (compDeck) => {
     return selectedSkill;
 }
 
-const skillSelectorCompFromPlayerSkill = (selectedCard) => {
+export const skillSelectorCompFromPlayerSkill = (selectedCard, topic) => {
     // console.log(selectedCard.skills)
     const skills = selectedCard.skills;
     let compSkillValue
@@ -102,9 +102,8 @@ const skillSelectorCompFromPlayerSkill = (selectedCard) => {
 
 // comparing random computer skill against player selected skill
 
-const compareSkills = (playerCard, compCard, topic) => {
-    const playerValue = skillSelectorCompFromPlayerSkill(playerCard, topic)
-    const compValue = skillSelectorCompFromPlayerSkill(compCard, topic)
+export const compareSkills = (playerValue, compValue) => {
+
     if (playerValue > compValue) {
         console.log("Player Wins'")
     } else if (playerValue < compValue) {

@@ -3,12 +3,12 @@ import Card from './PlaySpaceCard';
 import DeckCard from './DeckCard';
 
 
-const PlayerDeck = ({ playerCards, getSelectedPlayerCard }) => {
+const PlayerDeck = ({ playerDeck, getSelectedPlayerCard }) => {
 
-    const cardsList = playerCards.map((card, index)=>{
+    const cardsList = playerDeck.map((card, index) => {
         return (
             <>
-                <DeckCard card={card} key={index} getSelectedPlayerCard={getSelectedPlayerCard}/>
+                <DeckCard card={card} key={index} getSelectedPlayerCard={getSelectedPlayerCard} />
             </>
         )
     });
@@ -17,7 +17,7 @@ const PlayerDeck = ({ playerCards, getSelectedPlayerCard }) => {
 
             <p>Player Deck</p>
 
-            {cardsList} 
+            {cardsList}
         </>
     );
 
