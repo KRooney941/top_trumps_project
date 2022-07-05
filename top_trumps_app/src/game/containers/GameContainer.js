@@ -5,7 +5,7 @@ import PlayerDeck from '../components/PlayerDeck';
 import { cardSelectorComp, compareSkills, skillSelectorCompFromPlayerSkill, skillSelectorCompRandom } from '../components/GameLogic';
 
 
-const GameContainer = ({ playerDeck, selectedPlayer, compDeck }) => {
+const GameContainer = ({ playerDeck, selectedPlayer, compDeck, removeSelectedCardFromDeck }) => {
 
 
 
@@ -18,7 +18,7 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck }) => {
 
   const getSelectedPlayerCard = (card) => {
     setSelectedPlayerCard(card)
-    // removeSelectedCardFromDeck(card)
+    removeSelectedCardFromDeck(card)
   }
 
   const startGame = () => {
@@ -26,15 +26,12 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck }) => {
     const compValue = skillSelectorCompFromPlayerSkill(compCard, selectedSkill);
     const playerValue = skillSelectorCompFromPlayerSkill(selectedPlayerCard, selectedSkill);
     compareSkills(playerValue, compValue);
+    setSelectedPlayerCard(null);
+    setSelectedSkill(null);
 
   }
 
-  // const removeSelectedCardFromDeck = (card) => {
-  //   let playerCardsCopy = [...playerCards]
-  //   // playerCardsCopy.splice(card, 1)
-  //   // setPlayerCards(playerCardsCopy)
-  //   // console.log(playerCards)
-  // }
+
 
 
   return (
