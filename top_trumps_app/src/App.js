@@ -20,9 +20,9 @@ function App() {
   const [cards, setCards] = useState([]);
   const [playerDeck, setPlayerDeck] = useState([]);
   const [compDeck, setCompDeck] = useState([]);
-  const [selectedPlayer, setSelectedPlayer] = useState(null)
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
-  
+
 
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
       .then(cards => setCards(cards))
 
 
-      
+
   }, []);
 
 
@@ -87,6 +87,10 @@ function App() {
     setPlayers(players.filter(player => player._id !== idToDelete));
   }
 
+  const onPlayerSelected = () => {
+    return console.log("hello");
+  }
+
   // console.log(cards)
 
 
@@ -97,19 +101,19 @@ function App() {
         <Route exact path='/' element={< HomePageContainer />} />
         <Route exact path='/game' element={< GameContainer
           playerDeck={playerDeck} />} />
-        <Route exact path= '/player' element={<PlayerContainer 
-        players={players}
-        createPlayer={createPlayer}
-        updatePlayer={updatePlayer}
-        deletePlayer={deletePlayer}
-        onPlayerSelected={onPlayerSelected} 
+        <Route exact path='/player' element={<PlayerContainer
+          players={players}
+          createPlayer={createPlayer}
+          updatePlayer={updatePlayer}
+          deletePlayer={deletePlayer}
+          onPlayerSelected={onPlayerSelected}
         />} />
-        <Route exact path='/playerdetails' element= {<PlayerDetails
-        players={players}
-        updatePlayer={updatePlayer}
-        deletePlayer={deletePlayer}
-        selectedPlayer={selectedPlayer}
-        onPlayerSelected={onPlayerSelected} 
+        <Route exact path='/playerdetails' element={<PlayerDetails
+          players={players}
+          updatePlayer={updatePlayer}
+          deletePlayer={deletePlayer}
+          selectedPlayer={selectedPlayer}
+          onPlayerSelected={onPlayerSelected}
         />} />
       </Routes>
 
