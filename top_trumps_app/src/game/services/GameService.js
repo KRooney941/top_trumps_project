@@ -4,9 +4,8 @@ const GameService = {
 
     getCards() {
         return fetch(baseURL)
-          .then(res => res.json());
+            .then(res => res.json());
     }
-  
 }
 
 export default GameService;

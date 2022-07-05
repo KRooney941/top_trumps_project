@@ -1,9 +1,10 @@
 import React from "react";
-import PlayerDeck from "./PlayerDeck";
 
-const PlaySpace = ({cards}) => {
+const PlaySpace = () => {
 
- 
+    return (
+        <h1>Hello, this is where the game is played</h1>
+    );
 
 };
 

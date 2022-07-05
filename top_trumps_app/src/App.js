@@ -9,81 +9,53 @@ import GameService from './game/services/GameService';
 
 
 
-
 function App() {
 
   const [players, setPlayers] = useState([]);
   const [cards, setCards] = useState([]);
-  const [playerDeck, setPlayerDeck] = useState([
-//     {
-//       name: "Cammy",
-//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
-//       skills: [ {"power": 40},
-//     {"top_spin": 40},
-//     {"back_spin": 10},
-//     {"smash": 10},
-// ]},
-// {
-//       name: "Chris",
-//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
-//       skills: [ {"power": 25},
-//     {"top_spin": 25},
-//     {"back_spin": 40},
-//     {"smash": 10},
-// ]},
-//     {
-//       name: "Nadia",
-//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
-//       skills: [ {"power": 20},
-//      {"top_spin": 20},
-//      {"back_spin": 30},
-//      {"smash": 30},
-//     ]},
-//     {
-//       name: "Nick",
-//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
-//       skills: [ {"power": 20},
-//      {"top_spin": 20},
-//      {"back_spin": 50},
-//      {"smash": 10},
-//     ]},
-//     {
-//       name: "Shuna",
-//       sprite: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
-//       skills: [ {"power": 25},
-//      {"top_spin": 25},
-//      {"back_spin": 20},
-//      {"smash": 30},
-//     ]},
-  ]);
-  
+  const [playerDeck, setPlayerDeck] = useState([]);
+  const [compDeck, setCompDeck] = useState([]);
 
-  // useEffect(() => {
-  //   PlayerService.getPlayers()
-  //     .then(players => setPlayers(players))
-  // }, []);
+
+  useEffect(() => {
+    PlayerService.getPlayers()
+      .then(players => setPlayers(players))
+  }, []);
 
   useEffect(() => {
     GameService.getCards()
       .then(cards => setCards(cards))
-      .then(() => {
-        addToDeck()
-      })
   }, []);
 
-  const addToDeck = () => {
-    // console.log(cards[0])
+  useEffect(() => {
+    GameService.getCards()
+      .then(cards => addToDeck(cards))
+  }, [])
+
+
+
+  const addToDeck = (cards) => {
+
+    console.log(players)
     const playerDeckCopy = []
-    for (let i = 0; i < 5; i++){
-      const randomIndex = Math.floor(Math.random() * cards.length) 
-      playerDeckCopy.push(cards[randomIndex])
+    const compDeckCopy = []
+    for (let i = 0; i < 5; i++) {
+      const randomIndexPlayer = Math.floor(Math.random() * cards.length)
+      const randomIndexComp = Math.floor(Math.random() * cards.length)
+      //console.log(randomIndex);
+      playerDeckCopy.push(cards[randomIndexPlayer])
+      compDeckCopy.push(cards[randomIndexComp])
     }
+
+    console.log(playerDeckCopy)
+    console.log(compDeckCopy);
+    setCompDeck(compDeckCopy);
     setPlayerDeck(playerDeckCopy);
   }
 
   const createPlayer = newPlayer => {
     PlayerService.addPlayer(newPlayer)
-      .then(savedPlayer => setPlayers([ ...players, savedPlayer ]));
+      .then(savedPlayer => setPlayers([...players, savedPlayer]));
   };
 
   const updatePlayer = updatedPlayer => {
@@ -102,8 +74,8 @@ function App() {
     setPlayers(players.filter(player => player._id !== idToDelete));
   }
 
-  
-  
+
+
 
 
   return (
@@ -111,26 +83,20 @@ function App() {
     <Router>
       <Routes>
         <Route exact path='/' element={< HomePageContainer />} />
-        <Route exact path='/game' element={< GameContainer 
-        playerDeck={playerDeck}/>} />
-        <Route exact path= '/player' element={<PlayerContainer 
-        players={players}
-        addPlayer={createPlayer}
-        updatePlayer={updatePlayer}
-        deletePlayer={deletePlayer}
+        <Route exact path='/game' element={< GameContainer
+          playerDeck={playerDeck} />} />
+        <Route exact path='/player' element={<PlayerContainer
+          players={players}
+          addPlayer={createPlayer}
+          updatePlayer={updatePlayer}
+          deletePlayer={deletePlayer}
         />} />
       </Routes>
 
-      <>
-      {console.log(playerDeck)}
-
-
-    </>
-      
     </Router>
-    
+
   );
-  
+
 };
 
 export default App;
