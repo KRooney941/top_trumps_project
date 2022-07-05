@@ -1,10 +1,10 @@
 import React from "react";
-import {Link, useLocation } from "react-router-dom";
+import {Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react"
 
 
 const PlayerDetails = ({deletePlayer, updatePlayer}) => {
-
+  let navigate = useNavigate();
   const location = useLocation()
   const { player } = location.state
 
@@ -24,13 +24,14 @@ const PlayerDetails = ({deletePlayer, updatePlayer}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updatePlayer(formData);
+    navigate("../player", { replace: true });
   }
 
   const onChange = (e) => {
     const newFormData = Object.assign({}, formData);
     newFormData[e.target.name] = e.target.value;
     setFormData(newFormData);
-    console.log(newFormData)
+    // console.log(newFormData)
   }
 
  
@@ -39,9 +40,10 @@ const PlayerDetails = ({deletePlayer, updatePlayer}) => {
     <h1>{player.name}</h1>
     <form id="update-form" onSubmit={handleSubmit}>
       <h2>Update Player</h2>
-      <p>{player.wins}</p>
-      <p>{player.losses}</p>
-      <p>{player.draws}</p>
+      <p>Wins:{player.wins}</p>
+      <p>Losses:{player.losses}</p>
+      <p>Draws:{player.draws}</p>
+      <img src={player.avatar} alt="avatar"/>
       <div className="group">
         <label htmlFor="name">Player Name:</label>
         <input 

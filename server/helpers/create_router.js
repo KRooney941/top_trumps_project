@@ -6,7 +6,6 @@ const createRouter = function (collection) {
   const router = express.Router();
 
 
-  //index route
   router.get('/', (req, res) => {
     collection
       .find()
@@ -32,7 +31,6 @@ const createRouter = function (collection) {
       });
   });
 
-  //Create route. collection is database information. puts the data from result(res is short for result) to the top of the list at the result.ops. 
   router.post('/', (req, res) => {
     const newData = req.body; 
     collection
@@ -48,7 +46,7 @@ const createRouter = function (collection) {
   });
 
 
-  //Destroy route. Use collection (this is basically our seeds) as that's what we want to change. Line 56 makes changes to json. 
+
   router.delete('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id)
@@ -62,7 +60,6 @@ const createRouter = function (collection) {
     });
   })
 
-  //Update route. 
   router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updatedData = req.body;

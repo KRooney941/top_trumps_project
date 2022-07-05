@@ -7,7 +7,7 @@ import PlayerList from '../components/PlayerList';
 
 
 
-const PlayerContainer = ({players, createPlayer, updatePlayer, deletePlayer}) => {
+const PlayerContainer = ({players, createPlayer, updatePlayer, deletePlayer, onPlayerClick}) => {
 
 
 
@@ -18,6 +18,7 @@ const PlayerContainer = ({players, createPlayer, updatePlayer, deletePlayer}) =>
     players={players}
     updatePlayer={updatePlayer}
     deletePlayer={deletePlayer}
+    onPlayerClick={onPlayerClick} 
     />
     </>
   )
