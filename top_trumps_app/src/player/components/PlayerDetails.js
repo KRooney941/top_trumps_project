@@ -3,7 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react"
 
 
-const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
+
+const PlayerDetails = ({ deletePlayer, updatePlayer, avatars, onAvatarSelected, selectedAvatar }) => {
   let navigate = useNavigate();
   const location = useLocation()
   const { player } = location.state
@@ -32,11 +33,21 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
   const onChange = (e) => {
     const newFormData = Object.assign({}, formData);
     newFormData[e.target.name] = e.target.value;
-    setFormData(newFormData);
     console.log(newFormData)
+    setFormData(newFormData);
   }
 
-  console.log(player.avatar)
+  const handleChange = function(event) {
+    const chosenAvatar = avatars[event.target.value];
+    onChange(event)
+    onAvatarSelected(chosenAvatar.sprite);
+}
+
+
+const avatarOptions = avatars.map((avatar, index) => {
+  return <option value={index} key={index}>{avatar.name}</option>
+})
+
   return (
     <>
       <h1>{player.name}</h1>
@@ -45,7 +56,7 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
         <p>Wins:{player.wins}</p>
         <p>Losses:{player.losses}</p>
         <p>Draws:{player.draws}</p>
-        <img src="https://i.ibb.co/Hq9Ftz5/kieran-placeholder.jpg" alt="avatar" />
+        <img src="" alt="avatar" />
         <div className="group">
           <label htmlFor="name">Player Name:</label>
           <input
@@ -56,8 +67,13 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
             onChange={onChange}
           />
         </div>
+        <select defaultValue="" onChange={handleChange}>
+            <option value="" selected>Choose a Avatar</option>
+            {avatarOptions}
+        </select>
         <input type="submit" name="submit" value="Save" />
       </form>
+     
       <Link to="/player">
         <button id="deleteBtn" onClick={handleDeletePlayer}>
           <span>❌</span> Delete Player
@@ -65,6 +81,7 @@ const PlayerDetails = ({ deletePlayer, updatePlayer }) => {
       </Link>
     </>
   )
+
 }
 
 export default PlayerDetails;

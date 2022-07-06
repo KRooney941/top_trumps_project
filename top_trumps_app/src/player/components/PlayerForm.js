@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './FormAndList.css';
 
-const PlayerForm = ({createPlayer}) => {
- 
+const PlayerForm = ({createPlayer, avatars, onAvatarSelected, selectedAvatar}) => {
+
   const [formData, setFormData] = useState({
     name: "",
     avatar: "",
@@ -23,6 +23,19 @@ const PlayerForm = ({createPlayer}) => {
     setFormData(newFormData);
   }
 
+  const handleChange = function(event) {
+    const chosenAvatar = avatars[event.target.value];
+    onChange(event)
+    onAvatarSelected(chosenAvatar.sprite);
+}
+
+const avatarOptions = avatars.map((avatar, index) => {
+  return <option value={index} key={index}>{avatar.name}</option>
+})
+
+
+
+
   return  (
     <>
     <form id="form" onSubmit={handleSubmit}>
@@ -39,10 +52,11 @@ const PlayerForm = ({createPlayer}) => {
          <input type="submit" name="submit" value="Save" /></span>
       </div>
      
-      <option>Choose an avatar:</option>
+      <select defaultValue="" onChange={handleChange}>
+            <option value="" selected>Choose a Avatar</option>
+            {avatarOptions}
+        </select>
     </form>
-
-   
     </>
   );
 }

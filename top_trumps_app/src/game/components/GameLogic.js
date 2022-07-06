@@ -115,6 +115,7 @@ export const compareSkills = (playerValue, compValue) => {
     }
 }
 
+//avatar selector on update and create 
 
 
 //console.log(skillSelectorCompRandom(compDeck));

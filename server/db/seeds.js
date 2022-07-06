@@ -4,7 +4,7 @@ db.dropDatabase();
 db.players.insertMany([
     {
       name: "Kieran",
-      avatar: "https://ibb.co/NKGV9jc",
+      avatar: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
       wins: 3,
       draws: 1,
       losses: 2, 
@@ -12,7 +12,7 @@ db.players.insertMany([
     },
     {
       name: "Lou",
-      avatar: "https://ibb.co/3vTW1M9",
+      avatar: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
       wins: 5,
       draws: 0,
       losses: 0, 
@@ -20,7 +20,7 @@ db.players.insertMany([
     },
     {
       name: "Michael",
-      avatar: "https://ibb.co/fdWK8FN",
+      avatar: "https://i.ibb.co/02NxzQZ/anon-avatar.png",
       wins: 7,
       draws: 1,
       losses: 1, 
