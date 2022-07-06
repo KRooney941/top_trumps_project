@@ -1,4 +1,39 @@
-.player-cards{
-    display: inline-flex;
-    justify-content: space-between;
+.player-deck{
+    /* display: inline-flex;
+    justify-content: space-between; */
+    gap: 100px;
+    box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  -moz-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  -webkit-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  -o-box-shadow: 10px -10px 5px  rgba(0,0,0,0.6);
+  
+}
+
+/* div {
+    width:100px;
+    height:100px;
+} */
+
+.pic-test {
+    z-index: 1;
+    position: relative;
+}
+
+
+
+div.box1 {
+    position:relative;
+    z-index: 2;
+    top: -350px;
+    left: 20px;
+}
+
+div.boxtext {
+    position: absolute;
+    font-size: 50pt;
+    z-index: 3;
+    margin: 0 auto;
+        left: 70%;
+        right: 0;
+        top: 40%;
 }
