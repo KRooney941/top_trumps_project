@@ -26,13 +26,37 @@ const PlaySpace = ({getSkill, selectedSkill, startGame}) => {
   return (
 
     <>
-      <div className="play-space">
-          <h3>Player Score:</h3>
-          <PlaySpaceCard selectedCard={selectedPlayerCard} getSkill={getSkill}/>
-          <h4>{selectedPlayerCard.name}</h4>
-          {selectedSkill ? <p>{Object.keys(selectedSkill)}</p>: <p>Not Selected</p>}
-          {selectedSkill ? <button onClick={handleClick}>PLAY ROUND</button>: null}
+        
+
+
+      <div className="play-space-wrapper">
+            <div class="row">
+                <div class="column1">
+                    <div class="player-column">
+                    <PlaySpaceCard selectedCard={selectedPlayerCard} getSkill={getSkill}/>
+                    {selectedSkill ? <p>{Object.keys(selectedSkill)}</p>: <p>Not Selected</p>}
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="skill-column-">
+                        PLAYER SCORE
+                    </div>
+                </div>
+                <div class="column3">
+                    <div class="computer-column">
+                        <img class="card-back" src="https://i.ibb.co/6r9P3fK/card-back.png" alt="" height="400px"></img>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+          <div class="card-details">
           
+          {selectedSkill ? <button onClick={handleClick}>PLAY ROUND</button>: null}
+          </div>
 
         </div>
 
