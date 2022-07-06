@@ -3,7 +3,7 @@ import React from 'react';
 const DeckCard = ({ card, getSelectedPlayerCard }) => {
 
     const handleCardSelect = () => {
-      getSelectedPlayerCard(card)
+        getSelectedPlayerCard(card)
 
     }
 

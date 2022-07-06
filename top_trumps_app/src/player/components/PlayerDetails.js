@@ -1,9 +1,10 @@
 import React from "react";
-import {Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react"
 
 
-const PlayerDetails = ({deletePlayer, updatePlayer}) => {
+
+const PlayerDetails = ({ deletePlayer, updatePlayer, avatars, onAvatarSelected, selectedAvatar }) => {
   let navigate = useNavigate();
   const location = useLocation()
   const { player } = location.state
@@ -12,17 +13,19 @@ const PlayerDetails = ({deletePlayer, updatePlayer}) => {
     deletePlayer(player._id);
   }
 
-  const [formData, setFormData] = useState({ 
+  const [formData, setFormData] = useState({
+    _id: player._id,
     name: "",
-    avatar: "",
-    wins: 0,
-    draws: 0,
-    loses:0,
-    deck: []
+    avatar: selectedAvatar,
+    wins: player.wins,
+    draws: player.draws,
+    losses: player.losses,
+    deck: player.deck
   })
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData)
     updatePlayer(formData);
     navigate("../player", { replace: true });
   }
@@ -30,39 +33,56 @@ const PlayerDetails = ({deletePlayer, updatePlayer}) => {
   const onChange = (e) => {
     const newFormData = Object.assign({}, formData);
     newFormData[e.target.name] = e.target.value;
-    setFormData(newFormData);
     // console.log(newFormData)
+    setFormData(newFormData);
   }
 
- 
+  const handleChange = function (event) {
+    const chosenAvatar = avatars[event.target.value];
+    onChange(event);
+
+    onAvatarSelected(chosenAvatar.sprite);
+  }
+
+
+  const avatarOptions = avatars.map((avatar, index) => {
+    return <option value={index} key={index}>{avatar.name}</option>
+  })
+
   return (
     <>
-    <h1>{player.name}</h1>
-    <form id="update-form" onSubmit={handleSubmit}>
-      <h2>Update Player</h2>
-      <p>Wins:{player.wins}</p>
-      <p>Losses:{player.losses}</p>
-      <p>Draws:{player.draws}</p>
-      <img src={player.avatar} alt="avatar"/>
-      <div className="group">
-        <label htmlFor="name">Player Name:</label>
-        <input 
-          type="text" 
-          id="name" 
-          name="name"
-          required 
-          onChange={onChange}
-        />
-      </div>
-      <input type="submit" name="submit" value="Save" />
-    </form>
-    <Link to="/player">
-      <button id="deleteBtn" onClick={handleDeletePlayer}>
-        <span>❌</span> Delete Player
-      </button>
+      <h1>{player.name}</h1>
+      <form id="update-form" onSubmit={handleSubmit}>
+        <h2>Update Player</h2>
+        <p>Wins:{player.wins}</p>
+        <p>Losses:{player.losses}</p>
+        <p>Draws:{player.draws}</p>
+        <img src={selectedAvatar} alt="avatar" />
+        <div className="group">
+          <label htmlFor="name">Player Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            onChange={onChange}
+          />
+        </div>
+        <select defaultValue="" onChange={handleChange}>
+          <option value="" selected>Choose a Avatar</option>
+          {avatarOptions}
+        </select>
+        <input type="submit" name="submit" value="Save" />
+      </form>
+
+      <Link to="/player">
+        <button id="deleteBtn" onClick={handleDeletePlayer}>
+          <span>❌</span> Delete Player
+        </button>
       </Link>
     </>
   )
+
 }
 
 export default PlayerDetails;

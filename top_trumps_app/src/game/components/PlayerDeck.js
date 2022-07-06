@@ -4,12 +4,12 @@ import DeckCard from './DeckCard';
 import './PlayerDeck.css'
 
 
-const PlayerDeck = ({ playerCards, getSelectedPlayerCard }) => {
+const PlayerDeck = ({ playerDeck, getSelectedPlayerCard }) => {
 
-    const cardsList = playerCards.map((card, index)=>{
+    const cardsList = playerDeck.map((card, index) => {
         return (
             <>
-                <DeckCard card={card} key={index} getSelectedPlayerCard={getSelectedPlayerCard}/>
+                <DeckCard card={card} key={index} getSelectedPlayerCard={getSelectedPlayerCard} />
             </>
         )
     });
@@ -17,6 +17,7 @@ const PlayerDeck = ({ playerCards, getSelectedPlayerCard }) => {
         <>
 
             <p>Player Deck</p>
+
 
             {/* {cardsList}  */}
             <div class="pic-test">
@@ -32,8 +33,17 @@ const PlayerDeck = ({ playerCards, getSelectedPlayerCard }) => {
                 {/* <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
                 <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
                 <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
+
                 <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img> */}
             {/* </div> */}
+
+                <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
+                <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
+            
+
+
+
+
         </>
     );
 
