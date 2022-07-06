@@ -13,6 +13,7 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck, removeSelectedCar
   const [selectedSkill, setSelectedSkill] = useState()
   const [turn, setTurn] = useState();
   const [playerTurn, setPlayerTurn] = useState(true)
+  const [selectedCompCard, setSelectedCompCard] = useState();
 
   const getSkill = (skillTopic) => {
     setSelectedSkill(skillTopic[0])
@@ -38,12 +39,13 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck, removeSelectedCar
 
   const startGame = () => {
     const compCard = cardSelectorComp(compDeck);
+    setSelectedCompCard(compCard);
     if (playerTurn) {
       const compValue = skillSelectorCompFromPlayerSkill(compCard, selectedSkill);
       const playerValue = skillSelectorCompFromPlayerSkill(selectedPlayerCard, selectedSkill);
       compareSkills(playerValue, compValue);
     } else {
-      const compValue = skillSelectorCompRandom(compDeck)
+      const compValue = skillSelectorCompRandom(compDeck);
       const playerValue = skillSelectorCompFromPlayerSkill(selectedPlayerCard, selectedSkill);
       compareSkills(playerValue, compValue);
     }
@@ -61,7 +63,7 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck, removeSelectedCar
 
       <MenuItem />
       <PlaySpace selectedPlayerCard={selectedPlayerCard} getSkill={getSkill} selectedSkill={selectedSkill} startGame={startGame} />
-      <PlayerDeck playerDeck={playerDeck} getSelectedPlayerCard={getSelectedPlayerCard} />
+      <PlayerDeck playerDeck={playerDeck} getSelectedPlayerCard={getSelectedPlayerCard} selectedCompCard={selectedCompCard} />
 
     </>
   )

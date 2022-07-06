@@ -83,9 +83,20 @@ function App() {
     setSelectedPlayer(player);
   };
 
-  const removeSelectedCardFromDeck = (card) => {
+  const removeSelectedCardFromDeck = (selectedCard) => {
+    // console.log(selectedCard);
     let playerDeckCopy = [...playerDeck]
-    playerDeckCopy.splice(card, 1)
+    let index;
+    for (let i = 0; i < playerDeckCopy.length; i++) {
+      if (selectedCard._id === playerDeckCopy[i]._id) {
+        index = i;
+        console.log(index);
+        console.log(playerDeckCopy[index]);
+        playerDeckCopy.splice(index, 1)
+      }
+    }
+    // console.log(index);
+
     setPlayerDeck(playerDeckCopy)
     // console.log(playerCards)
   }
