@@ -21,9 +21,22 @@ function App() {
   const [playerDeck, setPlayerDeck] = useState([]);
   const [compDeck, setCompDeck] = useState([]);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [avatars, setAvatars] = useState([])
+  const [selectedAvatar, setSelectedAvatar] = useState(null)
 
+  useEffect(() => {
+    getAvatars()
+  }, [])
 
+  const getAvatars = function(){
+    fetch('http://localhost:9000/api/avatars')
+    .then(res => res.json())
+    .then(avatars => setAvatars(avatars))
+}
 
+const onAvatarSelected = function(avatar){
+  setSelectedAvatar(avatar)
+}
 
   useEffect(() => {
     PlayerService.getPlayers()
@@ -35,6 +48,8 @@ function App() {
     GameService.getCards()
       .then(cards => setCards(cards))
   }, []);
+
+
 
   const addToPlayerDeck = (cards) => {
     const playerDeckCopy = []
@@ -101,6 +116,8 @@ function App() {
           updatePlayer={updatePlayer}
           deletePlayer={deletePlayer}
           onPlayerSelected={onPlayerSelected}
+          avatars={avatars}
+          onAvatarSelected={onAvatarSelected}
         />} />
         <Route exact path='/playerdetails' element={<PlayerDetails
           players={players}
@@ -108,7 +125,11 @@ function App() {
           deletePlayer={deletePlayer}
           selectedPlayer={selectedPlayer}
           playerDeck={playerDeck}
-          compDeck={compDeck} />} />
+          compDeck={compDeck}   
+          avatars={avatars}
+          onAvatarSelected={onAvatarSelected}
+          />} 
+          />
       </Routes>
 
     </Router>

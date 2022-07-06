@@ -7,13 +7,15 @@ import PlayerList from '../components/PlayerList';
 
 
 
-const PlayerContainer = ({ players, createPlayer, updatePlayer, deletePlayer, onPlayerSelected, selectedPlayer }) => {
+const PlayerContainer = ({ players, createPlayer, updatePlayer, deletePlayer, onPlayerSelected, selectedPlayer, avatars, onAvatarSelected }) => {
 
 
 
   return (
     <>
-      <PlayerForm id="form" createPlayer={createPlayer} />
+      <PlayerForm id="form" createPlayer={createPlayer} 
+      avatars={avatars}
+      onAvatarSelected={onAvatarSelected}/>
       <PlayerList id="list"
         players={players}
         updatePlayer={updatePlayer}

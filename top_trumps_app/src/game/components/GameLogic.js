@@ -114,6 +114,7 @@ const compareSkills = (playerCard, compCard, topic) => {
     }
 }
 
+//avatar selector on update and create 
 
 
 //console.log(skillSelectorCompRandom(compDeck));
