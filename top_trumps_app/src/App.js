@@ -22,7 +22,7 @@ function App() {
   const [compDeck, setCompDeck] = useState([]);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [avatars, setAvatars] = useState([])
-  const [selectedAvatar, setSelectedAvatar] = useState(null)
+  const [selectedAvatar, setSelectedAvatar] = useState("")
 
   useEffect(() => {
     getAvatars()
@@ -34,8 +34,8 @@ function App() {
     .then(avatars => setAvatars(avatars))
 }
 
-const onAvatarSelected = function(avatar){
-  setSelectedAvatar(avatar)
+const onAvatarSelected = function(avatarUrl){
+  setSelectedAvatar(avatarUrl)
 }
 
   useEffect(() => {
@@ -117,6 +117,7 @@ const onAvatarSelected = function(avatar){
           deletePlayer={deletePlayer}
           onPlayerSelected={onPlayerSelected}
           avatars={avatars}
+          selectedAvatar={selectedAvatar}
           onAvatarSelected={onAvatarSelected}
         />} />
         <Route exact path='/playerdetails' element={<PlayerDetails
@@ -127,11 +128,11 @@ const onAvatarSelected = function(avatar){
           playerDeck={playerDeck}
           compDeck={compDeck}   
           avatars={avatars}
+          selectedAvatar={selectedAvatar}
           onAvatarSelected={onAvatarSelected}
           />} 
           />
       </Routes>
-
     </Router>
 
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './FormAndList.css';
 
-const PlayerForm = ({createPlayer, avatars, onAvatarSelected}) => {
+const PlayerForm = ({createPlayer, avatars, onAvatarSelected, selectedAvatar}) => {
 
   const [formData, setFormData] = useState({
     name: "",
@@ -25,7 +25,8 @@ const PlayerForm = ({createPlayer, avatars, onAvatarSelected}) => {
 
   const handleChange = function(event) {
     const chosenAvatar = avatars[event.target.value];
-    onAvatarSelected(chosenAvatar);
+    onChange(event)
+    onAvatarSelected(chosenAvatar.sprite);
 }
 
 const avatarOptions = avatars.map((avatar, index) => {
@@ -56,8 +57,6 @@ const avatarOptions = avatars.map((avatar, index) => {
             {avatarOptions}
         </select>
     </form>
-
-   
     </>
   );
 }

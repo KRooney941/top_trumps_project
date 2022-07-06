@@ -33,14 +33,16 @@ const PlayerDetails = ({ deletePlayer, updatePlayer, avatars, onAvatarSelected, 
   const onChange = (e) => {
     const newFormData = Object.assign({}, formData);
     newFormData[e.target.name] = e.target.value;
-    setFormData(newFormData);
     console.log(newFormData)
+    setFormData(newFormData);
   }
 
   const handleChange = function(event) {
     const chosenAvatar = avatars[event.target.value];
-    onAvatarSelected(chosenAvatar);
+    onChange(event)
+    onAvatarSelected(chosenAvatar.sprite);
 }
+
 
 const avatarOptions = avatars.map((avatar, index) => {
   return <option value={index} key={index}>{avatar.name}</option>
@@ -54,7 +56,7 @@ const avatarOptions = avatars.map((avatar, index) => {
         <p>Wins:{player.wins}</p>
         <p>Losses:{player.losses}</p>
         <p>Draws:{player.draws}</p>
-        <img src="https://i.ibb.co/Hq9Ftz5/kieran-placeholder.jpgs" alt="avatar" />
+        <img src="" alt="avatar" />
         <div className="group">
           <label htmlFor="name">Player Name:</label>
           <input
