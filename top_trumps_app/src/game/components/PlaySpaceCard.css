@@ -1,0 +1,27 @@
+.player.card-front {
+    float: left;
+    position:relative;
+    z-index: 1;
+    margin-left: -60px;
+    display: flex;
+    
+}
+
+.selected-card-name {
+    position: relative;
+    font-family: 'Staatliches', cursive;
+    font-size: 20pt;
+    color: white;
+    z-index: 2;
+    top: 75px;
+    left: 25px;
+
+}
+
+.player-card-profile {
+    position: absolute;
+    z-index: 3;
+    top: 255px;
+    left: 97px
+
+}

@@ -16,7 +16,7 @@ const DeckCard = ({ card, getSelectedPlayerCard }) => {
     return (
         <>
             <h1>{card.name}</h1>
-            <img src={card.sprite} alt={card.name} height="100px"></img>
+           <img src="https://i.ibb.co/02NxzQZ/anon-avatar.png"></img>
             {showSkills}
             <button onClick={handleCardSelect}>Select Card</button>
         </>

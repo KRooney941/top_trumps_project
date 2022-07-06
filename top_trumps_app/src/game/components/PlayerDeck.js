@@ -27,17 +27,20 @@ const PlayerDeck = ({ playerDeck, getSelectedPlayerCard }) => {
 
             <div class="box1">
                 <img src="https://i.ibb.co/02NxzQZ/anon-avatar.png"></img>
-                <div class="boxtext">
-                    <p>TESTTTTT</p>
                 </div>
-            </div>
 
                 
+                {/* <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
                 <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
                 <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
+
+                <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img> */}
+            {/* </div> */}
+
                 <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
                 <img src="https://i.ibb.co/VT4z3ZS/card-front.png" alt="" height="350px"></img>
             
+
 
 
 

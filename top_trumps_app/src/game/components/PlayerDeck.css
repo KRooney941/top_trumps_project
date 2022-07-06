@@ -28,7 +28,7 @@ div.box1 {
     left: 20px;
 }
 
-div.boxtext {
+/* div.boxtext {
     position: absolute;
     font-size: 50pt;
     z-index: 3;
@@ -36,4 +36,4 @@ div.boxtext {
         left: 70%;
         right: 0;
         top: 40%;
-}
+} */
