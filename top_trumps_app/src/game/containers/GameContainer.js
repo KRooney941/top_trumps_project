@@ -63,7 +63,7 @@ const GameContainer = ({ playerDeck, selectedPlayer, compDeck, removeSelectedCar
 
       <MenuItem />
       <PlaySpace selectedPlayerCard={selectedPlayerCard} getSkill={getSkill} selectedSkill={selectedSkill} startGame={startGame} />
-      <PlayerDeck playerDeck={playerDeck} getSelectedPlayerCard={getSelectedPlayerCard} selectedCompCard={selectedCompCard} />
+      <PlayerDeck playerDeck={playerDeck} getSelectedPlayerCard={getSelectedPlayerCard} selectedCompCard={selectedCompCard} selectedPlayerCard={selectedPlayerCard} />
 
     </>
   )

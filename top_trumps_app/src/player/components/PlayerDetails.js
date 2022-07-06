@@ -16,7 +16,7 @@ const PlayerDetails = ({ deletePlayer, updatePlayer, avatars, onAvatarSelected, 
   const [formData, setFormData] = useState({
     _id: player._id,
     name: "",
-    avatar: player.avatar,
+    avatar: selectedAvatar,
     wins: player.wins,
     draws: player.draws,
     losses: player.losses,
@@ -33,20 +33,21 @@ const PlayerDetails = ({ deletePlayer, updatePlayer, avatars, onAvatarSelected, 
   const onChange = (e) => {
     const newFormData = Object.assign({}, formData);
     newFormData[e.target.name] = e.target.value;
-    console.log(newFormData)
+    // console.log(newFormData)
     setFormData(newFormData);
   }
 
-  const handleChange = function(event) {
+  const handleChange = function (event) {
     const chosenAvatar = avatars[event.target.value];
-    onChange(event)
+    onChange(event);
+
     onAvatarSelected(chosenAvatar.sprite);
-}
+  }
 
 
-const avatarOptions = avatars.map((avatar, index) => {
-  return <option value={index} key={index}>{avatar.name}</option>
-})
+  const avatarOptions = avatars.map((avatar, index) => {
+    return <option value={index} key={index}>{avatar.name}</option>
+  })
 
   return (
     <>
@@ -56,7 +57,7 @@ const avatarOptions = avatars.map((avatar, index) => {
         <p>Wins:{player.wins}</p>
         <p>Losses:{player.losses}</p>
         <p>Draws:{player.draws}</p>
-        <img src="" alt="avatar" />
+        <img src={selectedAvatar} alt="avatar" />
         <div className="group">
           <label htmlFor="name">Player Name:</label>
           <input
@@ -68,12 +69,12 @@ const avatarOptions = avatars.map((avatar, index) => {
           />
         </div>
         <select defaultValue="" onChange={handleChange}>
-            <option value="" selected>Choose a Avatar</option>
-            {avatarOptions}
+          <option value="" selected>Choose a Avatar</option>
+          {avatarOptions}
         </select>
         <input type="submit" name="submit" value="Save" />
       </form>
-     
+
       <Link to="/player">
         <button id="deleteBtn" onClick={handleDeletePlayer}>
           <span>❌</span> Delete Player
