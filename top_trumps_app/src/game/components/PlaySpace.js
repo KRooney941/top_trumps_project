@@ -26,13 +26,24 @@ const PlaySpace = ({ getSkill, selectedSkill, startGame, selectedPlayerCard }) =
 
     <>
       <div className="play-space">
-        <h3>Player Score:</h3>
-        {selectedPlayerCard ? <PlaySpaceCard selectedCard={selectedPlayerCard} getSkill={getSkill} /> : null}
-        {selectedSkill ? <p>{selectedSkill}</p> : <p>Not Selected</p>}
-        {selectedSkill ? <button onClick={handleClick}>PLAY ROUND</button> : null}
+
+          <h3>Player Score:</h3>
+          {selectedPlayerCard ? <PlaySpaceCard selectedCard={selectedPlayerCard} getSkill={getSkill} /> : null}
+          <h4>{selectedPlayerCard.name}</h4>
+          {selectedSkill ? <p>{selectedSkill}</p> : <p>Not Selected</p>}
+          {selectedSkill ? <button onClick={handleClick}>PLAY ROUND</button>: null}
+          
+
+
+
+
+        
+        
+
       </div>
 
     </>
+
 
 
 
